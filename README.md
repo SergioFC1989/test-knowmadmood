@@ -1,73 +1,33 @@
-# React + TypeScript + Vite
+# Prueba técnica Frontend React.js
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Se requiere maquetar (HTML y estilos) y desarrollar (JavaScript) una aplicación para gestionar una lista de cadenas de texto.  
+Puedes encontrar el diseño en el siguiente enlace:  
+[Diseño en Adobe XD](https://xd.adobe.com/view/ea696dd0-8781-4460-8720-36deb2d19b2a-bf3a/)
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Especificación Funcional
 
-## React Compiler
+La aplicación debe tener una interfaz de usuario que cuente, al menos, con los siguientes elementos:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Un contenedor donde se irán añadiendo o borrando cadenas de texto.
+- Una caja de entrada de texto, donde el usuario pueda escribir los textos que desee añadir a la lista.
+- Un botón para agregar nuevas entradas.
+- Un botón para eliminar de la lista.
 
-## Expanding the ESLint configuration
+La aplicación debe:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Añadir entradas de texto: permitir al usuario escribir y añadir la entrada de texto a un listado. No se pueden añadir entradas vacías.
+- Eliminar un elemento de la lista: los ítems de la lista deben ser seleccionables por el usuario. No se pueden eliminar elementos de la lista sin haber seleccionado uno o varios elementos. No se requiere poder seleccionar múltiples ítems para borrarlos a la vez, pero se tendrá en cuenta.  
+  Es deseable, pero no requerido, que el usuario pueda eliminar elementos de la lista haciendo doble click sobre el ítem que se desea eliminar.
+- Es deseable, pero no requerido, permitir al usuario deshacer, como mínimo, el último cambio realizado. Para ello se deberá incluir un botón de deshacer.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Especificación Técnica
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Es deseable realizar una prueba en **Vanilla JS** y otra utilizando **React**.  
+Si se encuentran dificultades para realizar el desarrollo en Vanilla JS, se puede entregar solo la prueba con React.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Cualquier duda que tenga el candidato se puede hacer llegar al siguiente correo:  
+**hatim.amtil@logitravelgroup.com**
