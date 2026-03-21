@@ -1,0 +1,22 @@
+.text-field-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.text-field {
+  background: var(--color-background-alt) 0% 0% no-repeat padding-box;
+  border: 1px solid var(--color-border);
+  height: 60px;
+  width: 100%;
+  padding: 20px;
+  text-align: left;
+  font-size: var(--font-size-base);
+  &::placeholder {
+    color: var(--color-text-light);
+  }
+  &:focus {
+    outline: none;
+    border: 1px solid var(--color-primary);
+  }
+}

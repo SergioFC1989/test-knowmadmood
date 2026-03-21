@@ -1,0 +1,21 @@
+.list-item {
+  background-color: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  list-style: none;
+  overflow: hidden;
+  padding: 12px 24px;
+  text-align: start;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.list-item:hover {
+  background-color: var(--color-primary-lighter);
+}
+
+.list-item.selected {
+  background-color: var(--color-primary);
+  color: var(--color-background);
+}

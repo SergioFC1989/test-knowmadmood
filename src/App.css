@@ -1,0 +1,110 @@
+.app,
+.content-title,
+.group-button,
+.buttons-secondary,
+.modal-container,
+.modal-group-button {
+  display: flex;
+}
+
+.app {
+  align-items: center;
+  background: var(--color-background-gradient);
+  justify-content: center;
+  min-height: 100dvh;
+}
+
+.content-title,
+.modal-container {
+  flex-direction: column;
+}
+
+.group-button,
+.buttons-secondary,
+.modal-group-button {
+  flex-direction: row;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 35px;
+
+  border: 1px solid var(--color-border);
+  padding: 50px;
+  background-color: var(--color-background);
+  box-shadow: var(--shadow-base);
+  border-radius: 20px;
+  text-align: center;
+  width: 50%;
+}
+
+.content-title {
+  justify-content: center;
+  gap: 16px;
+  align-items: stretch;
+}
+
+.group-button {
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.buttons-secondary {
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+}
+
+.modal-container {
+  gap: 24px;
+  align-items: stretch;
+  background-color: var(--color-background);
+  width: 100%;
+}
+
+.modal-group-button {
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    width: 90%;
+    padding: 30px;
+  }
+
+  .group-button,
+  .buttons-secondary {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .group-button {
+    gap: 35px;
+    width: 100%;
+  }
+
+  .buttons-secondary {
+    gap: 16px;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 460px) {
+  .app {
+    padding: 8px;
+  }
+
+  .modal-group-button {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
