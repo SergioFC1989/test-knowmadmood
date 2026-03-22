@@ -11,14 +11,14 @@ export const useTask = () => {
     taskService.getTasks(),
   );
 
-  const handleAddNewItem = (name: string) => {
+  const handleAddItem = (name: string) => {
     const newTask = { id: crypto.randomUUID(), name };
     const tasks = taskService.addTask(newTask);
 
     setItems(tasks);
   };
 
-  const handleDelete = (items: ListItemType | ListItemType[]) => {
+  const handleDeleteItems = (items: ListItemType | ListItemType[]) => {
     const isArray = Array.isArray(items);
     const tasks = taskService.deleteTasks(isArray ? items : [items]);
 
@@ -30,7 +30,7 @@ export const useTask = () => {
     setIsOpenModal(value);
   };
 
-  const handleSelect = (item: (typeof items)[number]) => {
+  const handleSelectItem = (item: (typeof items)[number]) => {
     if (selectedItems.includes(item)) {
       setSelectedItems(selectedItems.filter((i) => i !== item));
     } else {
@@ -44,11 +44,11 @@ export const useTask = () => {
     const formData = new FormData(e.target);
     const name = formData.get("name")?.toString() || "";
 
-    handleAddNewItem(name);
+    handleAddItem(name);
     handleIsOpenModal(false);
   };
 
-  const handleUndo = () => {
+  const handleUndoItem = () => {
     const tasks = taskService.undoTask();
 
     setItems(tasks);
@@ -56,11 +56,11 @@ export const useTask = () => {
   };
 
   return {
-    handleAddNewItem,
-    handleDelete,
-    handleSelect,
+    handleAddItem,
+    handleDeleteItems,
+    handleSelectItem,
     handleIsOpenModal,
-    handleUndo,
+    handleUndoItem,
     handleSubmit,
     isOpenModal,
     items,

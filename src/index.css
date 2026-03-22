@@ -74,6 +74,17 @@ h1 {
   line-height: 44px;
 }
 
+#root {
+  opacity: 0;
+  animation: appFadeIn 0.5s ease forwards;
+}
+
+@keyframes appFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
 @media (max-width: 460px) {
   :root {
     --font-size-base: 14px;

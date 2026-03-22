@@ -6,11 +6,11 @@ import "./App.css";
 
 const App = () => {
   const {
-    handleDelete,
+    handleDeleteItems,
     handleIsOpenModal,
-    handleSelect,
+    handleSelectItem,
     handleSubmit,
-    handleUndo,
+    handleUndoItem,
     isOpenModal,
     items,
     selectedItems,
@@ -30,8 +30,8 @@ const App = () => {
         </section>
         <List
           items={items}
-          onDoubleClick={handleDelete}
-          onClick={handleSelect}
+          onDoubleClick={handleDeleteItems}
+          onClick={handleSelectItem}
         />
         <section
           aria-label="Task actions"
@@ -42,13 +42,13 @@ const App = () => {
             <Button
               disabled={!items.length}
               label={<UndoIcon size={26} />}
-              onClick={handleUndo}
+              onClick={handleUndoItem}
               variant="secondary"
             />
             <Button
               disabled={!selectedItems.length}
               label="delete"
-              onClick={() => handleDelete(selectedItems)}
+              onClick={() => handleDeleteItems(selectedItems)}
               variant="secondary"
             />
           </div>
