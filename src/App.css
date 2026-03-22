@@ -108,3 +108,13 @@
     align-items: stretch;
   }
 }
+
+@media (min-width: 461px) and (max-width: 1199px) {
+  .app {
+    padding: 25px;
+  }
+
+  .container {
+    width: 70%;
+  }
+}
