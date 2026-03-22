@@ -1,7 +1,6 @@
-import { Button, List, Modal } from "./components";
+import { Button, List, Modal, TextField } from "./components";
 import { UndoIcon } from "./icons";
 import { useTask } from "./hooks/useTask";
-import { TextField } from "./components/text-field/TextField";
 
 import "./App.css";
 
