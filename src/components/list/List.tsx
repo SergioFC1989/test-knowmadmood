@@ -1,7 +1,7 @@
 import ListItem, {
   type ListItemProps,
   type ListItemType,
-} from "../list-items/ListItems";
+} from "../list-item/ListItem";
 import "./List.css";
 
 export interface ListProps {

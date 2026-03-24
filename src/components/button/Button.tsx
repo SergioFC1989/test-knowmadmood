@@ -1,10 +1,10 @@
-import type { ReactNode } from "react";
+import type { ReactNode, SyntheticEvent } from "react";
 import "./Button.css";
 
 export interface ButtonProps {
   disabled?: boolean;
   label: string | ReactNode;
-  onClick?: () => void;
+  onClick?: (e: SyntheticEvent<HTMLButtonElement>) => void;
   title?: string;
   type?: "button" | "reset" | "submit";
   variant?: "primary" | "secondary";

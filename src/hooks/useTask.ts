@@ -1,21 +1,28 @@
-import { useState, type SubmitEventHandler } from "react";
+import { useState, type SubmitEventHandler, type SyntheticEvent } from "react";
 import { type ListItemType } from "../components";
 import { TaskService } from "../services/task.service";
 
 const taskService = TaskService.getInstance();
 
 export const useTask = () => {
-  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
   const [selectedItems, setSelectedItems] = useState<ListItemType[]>([]);
   const [items, setItems] = useState<ListItemType[]>(() =>
     taskService.getTasks(),
   );
+  const lastTaskAdded = taskService.getLastTaskAdded();
 
   const handleAddItem = (name: string) => {
     const newTask = { id: crypto.randomUUID(), name };
     const tasks = taskService.addTask(newTask);
 
     setItems(tasks);
+  };
+
+  const handleCancel = (e: SyntheticEvent<HTMLButtonElement>) => {
+    const form = e.currentTarget.closest("form");
+    form?.reset();
+    handleShowModal(false);
   };
 
   const handleDeleteItems = (items: ListItemType | ListItemType[]) => {
@@ -26,8 +33,8 @@ export const useTask = () => {
     setSelectedItems([]);
   };
 
-  const handleIsOpenModal = (value: boolean) => {
-    setIsOpenModal(value);
+  const handleShowModal = (value: boolean) => {
+    setShowModal(value);
   };
 
   const handleSelectItem = (item: (typeof items)[number]) => {
@@ -41,11 +48,13 @@ export const useTask = () => {
   const handleSubmit: SubmitEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
 
-    const formData = new FormData(e.target);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
     const name = formData.get("name")?.toString() || "";
 
+    form.reset();
     handleAddItem(name);
-    handleIsOpenModal(false);
+    handleShowModal(false);
   };
 
   const handleUndoItem = () => {
@@ -57,13 +66,15 @@ export const useTask = () => {
 
   return {
     handleAddItem,
+    handleCancel,
     handleDeleteItems,
     handleSelectItem,
-    handleIsOpenModal,
+    handleShowModal,
     handleUndoItem,
     handleSubmit,
-    isOpenModal,
+    showModal,
     items,
+    lastTaskAdded,
     selectedItems,
   };
 };

@@ -3,6 +3,7 @@ import type { ListItemType } from "../components";
 export class TaskService {
   private static instance: TaskService;
   private tasks: ListItemType[] = [];
+  private lastTaskAdded: ListItemType | null = null;
 
   public static getInstance(): TaskService {
     if (!TaskService.instance) {
@@ -16,8 +17,13 @@ export class TaskService {
     return [...this.tasks];
   }
 
+  public getLastTaskAdded() {
+    return this.lastTaskAdded;
+  }
+
   public addTask(task: ListItemType) {
     this.tasks.push(task);
+    this.lastTaskAdded = task;
     return this.tasks;
   }
 
@@ -25,11 +31,17 @@ export class TaskService {
     this.tasks = this.tasks.filter(
       (task) => !listTask.some((t) => t.id === task.id),
     );
+    this.lastTaskAdded = null;
     return this.tasks;
   }
 
   public undoTask() {
-    this.tasks = this.tasks.slice(0, -1);
+    if (this.lastTaskAdded) {
+      this.tasks = this.tasks.filter(
+        (task) => task.id !== this.lastTaskAdded?.id,
+      );
+      this.lastTaskAdded = null;
+    }
     return this.tasks;
   }
 }

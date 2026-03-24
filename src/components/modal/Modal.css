@@ -1,24 +1,20 @@
-/* Overlay */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: var(--color-overlay);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 999;
+.modal {
+  border: none;
+  padding: 0;
+  background: transparent;
+  min-width: stretch;
 }
 
-/* Animación de entrada para el overlay */
-.overlay-slide-down {
+.modal:focus {
+  outline: none;
+}
+
+.modal::backdrop {
+  background: var(--color-overlay);
   animation: overlaySlideDown 0.3s forwards;
 }
 
-/* Animación de salida para el overlay */
-.overlay-slide-up {
+.modal.closing::backdrop {
   animation: overlaySlideUp 0.3s forwards;
 }
 
@@ -29,17 +25,16 @@
   padding: 50px;
   max-width: 600px;
   width: 100%;
+  margin: auto;
   position: relative;
   box-shadow: var(--shadow-base);
-}
 
-/* Animación de entrada para el contenido del modal */
-.content-slide-down {
+  /* Animación de entrada para el contenido del modal */
   animation: contentSlideDown 0.3s forwards;
 }
 
 /* Animación de salida para el contenido del modal */
-.content-slide-up {
+.modal.closing .modal-content {
   animation: contentSlideUp 0.3s forwards;
 }
 

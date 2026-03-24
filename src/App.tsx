@@ -7,12 +7,14 @@ import "./App.css";
 const App = () => {
   const {
     handleDeleteItems,
-    handleIsOpenModal,
+    handleCancel,
+    handleShowModal,
     handleSelectItem,
     handleSubmit,
     handleUndoItem,
-    isOpenModal,
+    showModal,
     items,
+    lastTaskAdded,
     selectedItems,
   } = useTask();
 
@@ -40,7 +42,7 @@ const App = () => {
         >
           <div className="buttons-secondary">
             <Button
-              disabled={!items.length}
+              disabled={!lastTaskAdded}
               label={<UndoIcon size={26} />}
               onClick={handleUndoItem}
               variant="secondary"
@@ -55,11 +57,11 @@ const App = () => {
           <Button
             label="add"
             variant="primary"
-            onClick={() => handleIsOpenModal(true)}
+            onClick={() => handleShowModal(true)}
           />
         </section>
       </div>
-      <Modal isOpen={isOpenModal} onClose={() => handleIsOpenModal(false)}>
+      <Modal isOpen={showModal} onClose={() => handleShowModal(false)}>
         <form onSubmit={handleSubmit}>
           <div className="modal-container">
             <TextField
@@ -73,7 +75,7 @@ const App = () => {
               <Button label="add" type="submit" />
               <Button
                 label="cancel"
-                onClick={() => handleIsOpenModal(false)}
+                onClick={handleCancel}
                 variant="secondary"
               />
             </div>
